@@ -16,8 +16,9 @@ without changing the game files.
   ESTAB  100.73.140.55:58940  ->  100.103.109.48:6112  (war3.exe)
   ```
 
-- Windows: same PE, same loader path and same hook; the discovery uses
-  `tailscale.exe` there. Not tested on real Windows hardware yet.
+- Windows 10 (inside a VM) with Tailscale: verified. The shim loads as
+  `ijl15.dll`, finds the peers through `tailscale.exe status --json` and the
+  game connects over the tailnet.
 
 ## The problem
 
