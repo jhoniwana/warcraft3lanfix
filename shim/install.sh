@@ -17,6 +17,12 @@ fi
 cp "$HERE/ijl15.dll" "$GAME_DIR/ijl15.dll"
 [[ -f "$GAME_DIR/wc3lan.peers" ]] || printf '# One IPv4 per line. Extra peers to send the LAN discovery to.\n' > "$GAME_DIR/wc3lan.peers"
 
+# The release package ships autopeers.sh next to this script. Enable the
+# automatic Tailscale peer discovery when it is available.
+if [[ -x "$HERE/autopeers.sh" ]]; then
+  "$HERE/autopeers.sh" "$GAME_DIR"
+fi
+
 echo "installed in $GAME_DIR"
 echo "  shim     : $GAME_DIR/ijl15.dll"
 echo "  original : $GAME_DIR/ijl15_orig.dll"

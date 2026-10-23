@@ -12,6 +12,8 @@ My friends and I always wanted to play Warcraft III together, but we live on
 different networks and the game only finds matches on a plain LAN. So I made
 this fix.
 
+![Warcraft III main menu with the Local Area Network entry](docs/screenshot-lan-menu.jpg)
+
 ## Tested
 
 | Setup | Result |
@@ -104,6 +106,19 @@ Requires Go and `i686-w64-mingw32-gcc`:
 ```bash
 make
 ```
+
+## Legal
+
+This project is not affiliated with or endorsed by Blizzard Entertainment.
+It ships no Blizzard files: no game data, no original DLLs, no installers and
+no keys. You need your own copy of Warcraft III 1.27b.
+
+The shim replaces `ijl15.dll` in your own installation and keeps the original
+as `ijl15_orig.dll`. Uninstalling restores it.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
 
 ## More
 

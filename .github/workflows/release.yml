@@ -1,0 +1,64 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Install the cross compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mingw-w64 zip
+
+      - name: Test
+        run: make test
+
+      - name: Build the shim
+        run: make shim
+
+      - name: Package
+        run: |
+          set -euo pipefail
+          mkdir -p out/win out/linux
+
+          cp shim/ijl15.dll out/win/
+          cp shim/ijl15.dll out/linux/
+          cp shim/install.sh out/linux/install-linux.sh
+          cp shim/autopeers.sh scripts/wc3lan-peers.sh out/linux/
+          cp packaging/README-WINDOWS.txt out/win/
+          cp packaging/README-LINUX.txt out/linux/
+          chmod +x out/linux/*.sh
+
+          (cd out/win && zip -q -9 ../wc3lan-windows.zip ijl15.dll README-WINDOWS.txt)
+          (cd out/linux && zip -q -9 ../wc3lan-linux.zip \
+            ijl15.dll install-linux.sh autopeers.sh wc3lan-peers.sh README-LINUX.txt)
+          (cd out && sha256sum wc3lan-windows.zip wc3lan-linux.zip > SHA256SUMS.txt)
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#v}"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --title "wc3lan $version" --generate-notes
+          fi
+          gh release upload "$tag" \
+            out/wc3lan-windows.zip \
+            out/wc3lan-linux.zip \
+            out/SHA256SUMS.txt \
+            --clobber
