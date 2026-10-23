@@ -65,17 +65,19 @@ Windows Firewall must allow `war3.exe` (UDP and TCP 6112) for the host.
 
 ### Linux (Lutris/Wine)
 
-The shim works the same, but Wine cannot capture the output of the Linux
-`tailscale` binary, so the peer list has to be written by hand:
+Wine cannot capture the output of the Linux `tailscale` binary, so a small
+helper writes `wc3lan.peers` from the local Tailscale state:
 
 ```bash
 ./shim/install.sh "/path/to/WarCraft III"
-printf '100.64.0.20\n100.64.0.30\n' > "/path/to/WarCraft III/wc3lan.peers"
+./shim/autopeers.sh "/path/to/WarCraft III"
 ```
 
-Edit `wc3lan.peers` whenever the addresses change (one IPv4 per line, `#`
-comments allowed). With ZeroTier no list is needed: its broadcast is forwarded
-inside the network.
+`autopeers.sh` installs `~/.local/bin/wc3lan-peers` and a systemd user timer
+that refreshes the list every 30 seconds, so nobody edits the file by hand.
+Without systemd, run `wc3lan-peers "/path/to/WarCraft III/wc3lan.peers"`
+whenever the tailnet changes. On ZeroTier no list is needed at all: its
+broadcast is forwarded inside the network.
 
 ## Uninstall
 
