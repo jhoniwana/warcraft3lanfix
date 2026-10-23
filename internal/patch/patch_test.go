@@ -33,8 +33,8 @@ func TestFrozenThroneSpec(t *testing.T) {
 func TestSockaddrBytes(t *testing.T) {
 	// sin_addr is stored in network byte order: the dotted quad appears in
 	// the file in the order the user typed it.
-	got := sockaddrBytes(net.ParseIP("192.168.1.59").To4())
-	want := []byte{192, 168, 1, 59}
+	got := sockaddrBytes(net.ParseIP("192.168.1.10").To4())
+	want := []byte{192, 168, 1, 10}
 	if !bytes.Equal(got, want) {
 		t.Fatalf("sockaddrBytes = % x, want % x", got, want)
 	}

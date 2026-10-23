@@ -170,7 +170,7 @@ func Apply(path string, ip net.IP, spec Spec, dryRun bool) (*Report, error) {
 // sockaddrBytes returns the four bytes of a sin_addr field for ip.
 //
 // A sockaddr_in keeps the address in network byte order, so the bytes are the
-// dotted quad in its natural order: 192.168.1.59 is C0 A8 01 3B.
+// dotted quad in its natural order: 192.168.1.10 is C0 A8 01 0A.
 func sockaddrBytes(ip net.IP) []byte {
 	v4 := ip.To4()
 	if v4 == nil {

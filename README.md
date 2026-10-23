@@ -13,7 +13,7 @@ without changing the game files.
   opened its session over `100.x`:
 
   ```
-  ESTAB  100.73.140.55:58940  ->  100.103.109.48:6112  (war3.exe)
+  ESTAB  100.64.0.10:58940  ->  100.64.0.20:6112  (war3.exe)
   ```
 
 - Windows 10 (inside a VM) with Tailscale: verified. The shim loads as
@@ -70,7 +70,7 @@ The shim works the same, but Wine cannot capture the output of the Linux
 
 ```bash
 ./shim/install.sh "/path/to/WarCraft III"
-printf '100.93.64.30\n100.109.188.119\n' > "/path/to/WarCraft III/wc3lan.peers"
+printf '100.64.0.20\n100.64.0.30\n' > "/path/to/WarCraft III/wc3lan.peers"
 ```
 
 Edit `wc3lan.peers` whenever the addresses change (one IPv4 per line, `#`

@@ -71,8 +71,8 @@ announcements of a build to one unicast address.
 ## Byte order
 
 `sin_addr` is a Winsock field, so it is network byte order: the file has to
-contain the dotted quad in its natural order. Patching to `192.168.1.59`
-writes `C0 A8 01 3B`. This is consistent with the sibling constructors:
+contain the dotted quad in its natural order. Patching to `192.168.1.10`
+writes `C0 A8 01 0A`. This is consistent with the sibling constructors:
 
 - `0x6F0A2590` copies a caller supplied `sin_addr` dword,
 - `0x6F0A25F0` builds an address from an `"ip:port"` string and stores the
@@ -83,7 +83,7 @@ writes `C0 A8 01 3B`. This is consistent with the sibling constructors:
 
 ```
 wc3lan inspect "/path/to/WarCraft III/game.dll"
-wc3lan patch   "/path/to/WarCraft III/game.dll" --host 192.168.1.59
+wc3lan patch   "/path/to/WarCraft III/game.dll" --host 192.168.1.10
 wc3lan unpatch "/path/to/WarCraft III/game.dll"
 ```
 
