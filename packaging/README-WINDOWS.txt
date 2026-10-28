@@ -3,6 +3,8 @@ wc3lan - Warcraft III LAN over Tailscale, ZeroTier or WireGuard
 
 1. Install Tailscale and log in to the same tailnet as your friends.
 2. In your Warcraft III folder, rename ijl15.dll to ijl15_orig.dll.
+   The name must be EXACTLY ijl15_orig.dll: the shim loads that file to
+   forward the original functions. Any other name will not work.
 3. Copy the ijl15.dll from this zip into that folder.
 4. Allow war3.exe in Windows Firewall (UDP and TCP, port 6112).
 5. Open the game and go to Local Area Network (Red de Area Local).

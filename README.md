@@ -35,6 +35,8 @@ Grab the zip from the [releases page](../../releases):
 
 1. Install **Tailscale** and log in to the same tailnet as your friends.
 2. In your Warcraft III folder, rename `ijl15.dll` to `ijl15_orig.dll`.
+   **The backup must use exactly that name:** the shim loads `ijl15_orig.dll`
+   to forward the original functions. Any other name will not work.
 3. Copy the `ijl15.dll` from the zip into that folder.
 4. Let `war3.exe` through the Windows Firewall (UDP and TCP 6112).
 5. Open the game and go to **Local Area Network**.
@@ -90,8 +92,9 @@ sendto socket bound to 0.0.0.0:6112
 - **Two copies of the same match appear** when both players are on the same
   WiFi *and* on Tailscale. Harmless; it is the same match seen through two
   paths.
-- **`could not hook game.dll`:** the shim was not loaded. Check that both
-  `ijl15.dll` and `ijl15_orig.dll` are in the game folder.
+- **`could not hook game.dll` or the game does not start:** the shim was not
+  loaded. Check that both `ijl15.dll` and `ijl15_orig.dll` are in the game
+  folder and that the backup is named **exactly** `ijl15_orig.dll`.
 - **Different game version:** this was tested only on 1.27.1.7085. Other
   builds may not hook correctly.
 
