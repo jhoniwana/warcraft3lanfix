@@ -32,7 +32,7 @@ menu). Tested with the Spanish client. In English the menu entry is
 
 ## Download
 
-Grab the zip from the [releases page](../../releases):
+Grab the zip from the [releases page](https://github.com/jhoniwana/warcraft3lanfix/releases):
 
 - `wc3lan-windows.zip` for Windows
 - `wc3lan-linux.zip` for Linux with Lutris/Wine

@@ -14,8 +14,8 @@
 #
 set -euo pipefail
 
-export GHIDRA_INSTALL_DIR=${GHIDRA_INSTALL_DIR:-/home/jhon/tools/ghidra_12.1.4_PUBLIC}
-export JAVA_HOME=${JAVA_HOME:-/home/jhon/.jdks/jdk-21.0}
+export GHIDRA_INSTALL_DIR=${GHIDRA_INSTALL_DIR:-$HOME/tools/ghidra}
+export JAVA_HOME=${JAVA_HOME:-$HOME/.jdks/jdk-21}
 PROVIDER=${PROVIDER:-ghidra}
 
 if [[ $# -lt 1 ]]; then
