@@ -16,7 +16,9 @@ this fix.
 
 ## Demo
 
-[Watch a short demo (36 s, 720p): a match found and joined over Tailscale](docs/warcraft3lanfix.mp4)
+![A match found and joined over Tailscale](docs/warcraft3lanfix.webp)
+
+[Full video (36 s, 720p)](docs/warcraft3lanfix.mp4)
 
 ## Tested
 
