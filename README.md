@@ -14,6 +14,10 @@ this fix.
 
 ![Warcraft III main menu with the Local Area Network entry](docs/screenshot-lan-menu.jpg)
 
+## Demo
+
+[Watch a short demo (36 s, 720p): a match found and joined over Tailscale](docs/warcraft3lanfix.mp4)
+
 ## Tested
 
 | Setup | Result |
